@@ -18,14 +18,14 @@ const NewsSection: React.FC = () => {
   ];
 
   return (
-    <section id="news-section" className="mb-12">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl text-black">주요 뉴스</h2>
-        <span className="text-neutral-600 hover:text-black text-sm cursor-pointer">
+    <section id="news-section" className="mb-20">
+      <div className="flex items-center justify-between mb-10">
+        <h2 className="text-4xl text-black font-bold">주요 뉴스</h2>
+        <span className="text-neutral-600 hover:text-black text-lg cursor-pointer transition-colors">
           더보기 <i className="fas fa-arrow-right"></i>
         </span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {newsData.map((news, index) => (
           <NewsCard
             key={index}

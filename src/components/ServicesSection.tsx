@@ -10,9 +10,9 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section id="services-section" className="mb-12">
-      <h2 className="text-2xl text-black mb-6">주요 서비스</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <section id="services-section" className="mb-20">
+      <h2 className="text-4xl text-black mb-10 font-bold">주요 서비스</h2>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
         {servicesData.map((service, index) => (
           <ServiceCard
             key={index}

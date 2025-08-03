@@ -8,13 +8,13 @@ const StockWidget: React.FC = () => {
   ];
 
   return (
-    <section id="stock-widget" className="bg-white border border-neutral-200 rounded-lg p-6 mb-6">
-      <h3 className="text-black mb-4">증시</h3>
-      <div className="space-y-2">
+    <section id="stock-widget" className="bg-white border border-neutral-200 rounded-xl p-8 shadow-lg">
+      <h3 className="text-black mb-6 text-xl font-bold">증시</h3>
+      <div className="space-y-4">
         {stockData.map((stock, index) => (
           <div key={index} className="flex justify-between items-center">
-            <span className="text-sm">{stock.name}</span>
-            <span className="text-sm">{stock.value}</span>
+            <span className="text-base font-semibold">{stock.name}</span>
+            <span className="text-base font-bold">{stock.value}</span>
           </div>
         ))}
       </div>

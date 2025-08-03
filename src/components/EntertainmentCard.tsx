@@ -8,12 +8,12 @@ interface EntertainmentCardProps {
 
 const EntertainmentCard: React.FC<EntertainmentCardProps> = ({ imageText, title, description }) => {
   return (
-    <article className="border border-neutral-200 rounded-lg p-4">
-      <div className="bg-neutral-600 h-32 rounded mb-3 flex items-center justify-center">
-        <span className="text-white text-sm">{imageText}</span>
+    <article className="bg-white border border-neutral-200 rounded-xl p-8 hover:shadow-xl transition-all duration-300 cursor-pointer hover:border-black">
+      <div className="bg-neutral-600 h-56 rounded-lg mb-6 flex items-center justify-center">
+        <span className="text-white text-lg">{imageText}</span>
       </div>
-      <h4 className="mb-2">{title}</h4>
-      <p className="text-neutral-600 text-sm">{description}</p>
+      <h4 className="mb-4 text-xl font-bold">{title}</h4>
+      <p className="text-neutral-600 text-lg leading-relaxed">{description}</p>
     </article>
   );
 };

@@ -2,10 +2,12 @@ import React from 'react';
 import WeatherWidget from './WeatherWidget';
 import StockWidget from './StockWidget';
 import TrendingWidget from './TrendingWidget';
+import ProfileWidget from './ProfileWidget';
 
 const Sidebar: React.FC = () => {
   return (
-    <aside id="sidebar" className="lg:col-span-1">
+    <aside className="xl:col-span-1 space-y-6">
+      <ProfileWidget />
       <WeatherWidget />
       <StockWidget />
       <TrendingWidget />

@@ -21,9 +21,9 @@ const EntertainmentSection: React.FC = () => {
   ];
 
   return (
-    <section id="entertainment-section">
-      <h2 className="text-2xl text-black mb-6">연예·스포츠</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <section id="entertainment-section" className="mb-20">
+      <h2 className="text-4xl text-black mb-10 font-bold">연예·스포츠</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {entertainmentData.map((item, index) => (
           <EntertainmentCard
             key={index}
