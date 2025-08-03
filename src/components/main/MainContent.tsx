@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchSection from './SearchSection';
-import NewsSection from './NewsSection';
-import ServicesSection from './ServicesSection';
-import EntertainmentSection from './EntertainmentSection';
-import Sidebar from './Sidebar';
+import SearchSection from '../sections/SearchSection';
+import NewsSection from '../sections/NewsSection';
+import ServicesSection from '../sections/ServicesSection';
+import EntertainmentSection from '../sections/EntertainmentSection';
+import Sidebar from '../layout/Sidebar';
 
 const MainContent: React.FC = () => {
   return (
