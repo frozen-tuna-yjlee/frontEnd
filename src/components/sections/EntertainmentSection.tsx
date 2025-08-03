@@ -4,7 +4,7 @@ import EntertainmentCard from '../cards/EntertainmentCard';
 const EntertainmentSection: React.FC = () => {
   const entertainmentData = [
     {
-      imageText: "연예 이미지",
+      imageText: "연예 이미지..",
       title: "연예계 소식",
       description: "최신 연예계 동향..."
     },
