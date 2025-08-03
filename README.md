@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# Portal - React 포털 사이트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+한국형 포털 사이트를 React와 TypeScript로 구현한 프로젝트입니다.
 
-Currently, two official plugins are available:
+## 🚀 빠른 시작
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 개발 서버 실행
+```bash
+npm run dev
+# 또는
+npm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+서버가 실행되면 자동으로 브라우저가 열리고 `http://localhost:5173`에서 사이트를 확인할 수 있습니다.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 빌드
+```bash
+npm run build
 ```
+
+### 미리보기
+```bash
+npm run preview
+```
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── components/          # React 컴포넌트들
+│   ├── Header.tsx      # 네비게이션 헤더
+│   ├── SearchSection.tsx # 통합 검색 섹션
+│   ├── NewsCard.tsx    # 뉴스 카드 컴포넌트
+│   ├── NewsSection.tsx # 주요 뉴스 섹션
+│   ├── ServiceCard.tsx # 서비스 카드 컴포넌트
+│   ├── ServicesSection.tsx # 주요 서비스 섹션
+│   ├── EntertainmentCard.tsx # 연예/스포츠 카드
+│   ├── EntertainmentSection.tsx # 연예·스포츠 섹션
+│   ├── WeatherWidget.tsx # 날씨 위젯
+│   ├── StockWidget.tsx # 주식 위젯
+│   ├── TrendingWidget.tsx # 실시간 검색어 위젯
+│   ├── Sidebar.tsx     # 사이드바
+│   ├── MainContent.tsx # 메인 콘텐츠
+│   ├── Footer.tsx      # 푸터
+│   └── index.ts        # 컴포넌트 export
+├── App.tsx             # 메인 앱 컴포넌트
+├── main.tsx           # 앱 진입점
+└── index.css          # 글로벌 스타일
+```
+
+## 🛠 기술 스택
+
+- **React 18** - UI 라이브러리
+- **TypeScript** - 타입 안전성
+- **Vite** - 빌드 도구
+- **Tailwind CSS** - 스타일링
+- **Font Awesome** - 아이콘
+- **Inter Font** - 구글 폰트
+
+## 🎨 주요 기능
+
+- ✅ 반응형 디자인 (모바일/데스크톱)
+- ✅ 통합 검색 기능
+- ✅ 뉴스 섹션
+- ✅ 주요 서비스 링크
+- ✅ 연예·스포츠 섹션
+- ✅ 날씨 위젯
+- ✅ 주식 정보 위젯
+- ✅ 실시간 검색어 위젯
+- ✅ 네비게이션 메뉴
+- ✅ 푸터 링크
+
+## 🔧 개발 환경 설정
+
+1. Node.js 설치 (v16 이상)
+2. 프로젝트 클론
+3. 의존성 설치: `npm install`
+4. 개발 서버 실행: `npm run dev`
+
+## 📱 반응형 지원
+
+- **모바일**: 320px ~ 768px
+- **태블릿**: 768px ~ 1024px
+- **데스크톱**: 1024px 이상
+
+## 🎯 컴포넌트 사용법
+
+```tsx
+import { Header, MainContent, Footer } from './components';
+
+function App() {
+  return (
+    <div className="h-full text-base-content">
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+}
+```
+
+## 📄 라이선스
+
+MIT License
