@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../cards/ServiceCard';
 
 const ServicesSection: React.FC = () => {
   const servicesData = [

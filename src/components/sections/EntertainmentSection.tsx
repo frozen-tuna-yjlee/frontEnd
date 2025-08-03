@@ -1,5 +1,5 @@
 import React from 'react';
-import EntertainmentCard from './EntertainmentCard';
+import EntertainmentCard from '../cards/EntertainmentCard';
 
 const EntertainmentSection: React.FC = () => {
   const entertainmentData = [

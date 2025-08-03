@@ -1,8 +1,8 @@
 import React from 'react';
-import WeatherWidget from './WeatherWidget';
-import StockWidget from './StockWidget';
-import TrendingWidget from './TrendingWidget';
-import ProfileWidget from './ProfileWidget';
+import WeatherWidget from '../widgets/WeatherWidget';
+import StockWidget from '../widgets/StockWidget';
+import TrendingWidget from '../widgets/TrendingWidget';
+import ProfileWidget from '../widgets/ProfileWidget';
 
 const Sidebar: React.FC = () => {
   return (

@@ -1,15 +1,24 @@
-export { default as Header } from './Header';
-export { default as MainContent } from './MainContent';
-export { default as Footer } from './Footer';
-export { default as SearchSection } from './SearchSection';
-export { default as NewsSection } from './NewsSection';
-export { default as NewsCard } from './NewsCard';
-export { default as ServicesSection } from './ServicesSection';
-export { default as ServiceCard } from './ServiceCard';
-export { default as EntertainmentSection } from './EntertainmentSection';
-export { default as EntertainmentCard } from './EntertainmentCard';
-export { default as Sidebar } from './Sidebar';
-export { default as WeatherWidget } from './WeatherWidget';
-export { default as StockWidget } from './StockWidget';
-export { default as TrendingWidget } from './TrendingWidget';
-export { default as ProfileWidget } from './ProfileWidget'; 
+// Layout components
+export { default as Header } from './layout/Header';
+export { default as Footer } from './layout/Footer';
+export { default as Sidebar } from './layout/Sidebar';
+
+// Main content
+export { default as MainContent } from './main/MainContent';
+
+// Section components
+export { default as SearchSection } from './sections/SearchSection';
+export { default as NewsSection } from './sections/NewsSection';
+export { default as ServicesSection } from './sections/ServicesSection';
+export { default as EntertainmentSection } from './sections/EntertainmentSection';
+
+// Card components
+export { default as NewsCard } from './cards/NewsCard';
+export { default as ServiceCard } from './cards/ServiceCard';
+export { default as EntertainmentCard } from './cards/EntertainmentCard';
+
+// Widget components
+export { default as WeatherWidget } from './widgets/WeatherWidget';
+export { default as StockWidget } from './widgets/StockWidget';
+export { default as TrendingWidget } from './widgets/TrendingWidget';
+export { default as ProfileWidget } from './widgets/ProfileWidget'; 
