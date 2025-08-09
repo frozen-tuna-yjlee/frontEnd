@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// axios is handled inside AuthContext
+import { useAuth } from '../../context/AuthContext';
 import './LoginPage.css';
 
 interface LoginPageProps {
@@ -12,6 +13,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onClose }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,20 +21,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onClose }) => {
     setError('');
 
     try {
-      // 로그인 API 호출 예시
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
-        user_id: userId,
-        user_pw: userPw,
-        rememberMe: rememberMe
-      });
-
-      console.log('Login successful:', response.data);
-      
-      // 로그인 성공 시 처리
-      // 예: 토큰 저장, 사용자 정보 저장, 페이지 리다이렉트 등
-      
-      onClose(); // 로그인 모달 닫기
-      
+      await login(userId, userPw, rememberMe);
+      onClose();
     } catch (err: any) {
       console.error('Login failed:', err);
       

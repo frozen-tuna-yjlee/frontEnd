@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import LoginPage from '../auth/LoginPage';
+import { useAuth } from '../../context/AuthContext';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [showLoginPage, setShowLoginPage] = useState(false);
+  const { user, logout } = useAuth();
 
   const handleLoginClick = () => {
     setShowLoginPage(true);
@@ -32,15 +34,27 @@ const Header: React.FC = () => {
               <button className="icon-button">
                 <i className="far fa-bell"></i>
               </button>
-              <button className="icon-button">
-                <i className="far fa-user"></i>
-              </button>
-              <button 
-                onClick={handleLoginClick}
-                className="login-button"
-              >
-                로그인
-              </button>
+              {user ? (
+                <>
+                  <div className="icon-button">
+                    <i className="far fa-user"></i>
+                  </div>
+                  <span className="user-name">{user.name}</span>
+                  <button onClick={logout} className="login-button">로그아웃</button>
+                </>
+              ) : (
+                <>
+                  <button className="icon-button">
+                    <i className="far fa-user"></i>
+                  </button>
+                  <button 
+                    onClick={handleLoginClick}
+                    className="login-button"
+                  >
+                    로그인
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
