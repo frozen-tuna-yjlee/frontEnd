@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { AuthProvider } from './context/AuthContext';
 import Header from './components/layout/Header';
 import MainContent from './components/main/MainContent';
 import Footer from './components/layout/Footer';
@@ -24,11 +25,13 @@ function App() {
   }, []);
 
   return (
-    <div className="h-full text-base-content">
-      <Header />
-      <MainContent />
-      <Footer />
-    </div>
+    <AuthProvider>
+      <div className="h-full text-base-content">
+        <Header />
+        <MainContent />
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 

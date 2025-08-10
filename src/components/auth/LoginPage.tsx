@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // axios is handled inside AuthContext
 import { useAuth } from '../../context/AuthContext';
+import KakaoLogin from './KakaoLogin';
 import './LoginPage.css';
 
 interface LoginPageProps {
@@ -14,6 +15,32 @@ const LoginPage: React.FC<LoginPageProps> = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuth();
+
+  // 카카오 로그인 성공 핸들러
+  const handleKakaoSuccess = async (userInfo: any) => {
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      console.log('카카오 로그인 성공:', userInfo);
+      // 여기서 백엔드로 카카오 로그인 정보를 전송
+      // await login('kakao', userInfo.accessToken);
+      
+      // 임시로 성공 처리
+      onClose();
+    } catch (err: any) {
+      console.error('카카오 로그인 처리 실패:', err);
+      setError('카카오 로그인 처리에 실패했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // 카카오 로그인 실패 핸들러
+  const handleKakaoError = (error: any) => {
+    console.error('카카오 로그인 실패:', error);
+    setError('카카오 로그인에 실패했습니다.');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -133,6 +160,15 @@ const LoginPage: React.FC<LoginPageProps> = ({ onClose }) => {
               <i className="fab fa-google"></i>
               <span>Google로 로그인</span>
             </button>
+
+            {/* 카카오 로그인 */}
+            <div className="kakao-login-container">
+              <KakaoLogin
+                onSuccess={handleKakaoSuccess}
+                onError={handleKakaoError}
+                className="kakao-login-button"
+              />
+            </div>
           </div>
 
           {/* 회원가입 링크 */}
