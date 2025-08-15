@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import Header from './components/layout/Header';
 import MainContent from './components/main/MainContent';
 import Footer from './components/layout/Footer';
 import './App.css';
 
 function App() {
+  const { refreshToken } = useAuth();
+  
   useEffect(() => {
     // Font Awesome 설정
     const script = document.createElement('script');
@@ -14,6 +16,7 @@ function App() {
     script.referrerPolicy = 'no-referrer';
     document.head.appendChild(script);
 
+    refreshToken();
     // Font Awesome 설정
     (window as any).FontAwesomeConfig = {
       autoReplaceSvg: 'nest',
