@@ -233,6 +233,34 @@
   color: #dc2626;
 }
 
+/* 카카오 로그인 스타일 */
+.kakao-login-container {
+  margin-top: 12px;
+}
+
+.kakao-login-button {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  background-color: #FEE500 !important;
+  color: #000000 !important;
+  border: none !important;
+  transition: background-color 0.2s !important;
+}
+
+.kakao-login-button:hover:not(:disabled) {
+  background-color: #FDD835 !important;
+}
+
+.kakao-login-button:disabled {
+  background-color: #F5F5F5 !important;
+  color: #999999 !important;
+  cursor: not-allowed !important;
+}
+
 .signup-link {
   text-align: center;
   color: #6b7280;

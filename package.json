@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "start": "vite --host 0.0.0.0 --port 5173",
+    "debug": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug",
+    "debug:verbose": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug --force",
+    "debug:inspect": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug --inspect",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

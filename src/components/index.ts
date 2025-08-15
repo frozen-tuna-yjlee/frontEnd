@@ -21,4 +21,9 @@ export { default as EntertainmentCard } from './cards/EntertainmentCard';
 export { default as WeatherWidget } from './widgets/WeatherWidget';
 export { default as StockWidget } from './widgets/StockWidget';
 export { default as TrendingWidget } from './widgets/TrendingWidget';
-export { default as ProfileWidget } from './widgets/ProfileWidget'; 
+export { default as ProfileWidget } from './widgets/ProfileWidget';
+
+// Auth components
+export { default as LoginPage } from './auth/LoginPage';
+export { default as KakaoLogin } from './auth/KakaoLogin';
+export { default as KakaoLoginDemo } from './auth/KakaoLoginDemo'; 
