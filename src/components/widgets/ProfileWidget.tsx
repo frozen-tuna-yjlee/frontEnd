@@ -88,7 +88,7 @@ const ProfileWidget: React.FC = () => {
           <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition-colors">
             프로필 편집
           </button>
-          <button onClick={logout} className="bg-neutral-200 text-black px-4 py-2 rounded-lg text-sm hover:bg-neutral-300 transition-colors">
+          <button onClick={() => logout()} className="bg-neutral-200 text-black px-4 py-2 rounded-lg text-sm hover:bg-neutral-300 transition-colors">
             로그아웃
           </button>
         </div>

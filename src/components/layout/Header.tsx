@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                     <i className="far fa-user"></i>
                   </div>
                   <span className="user-name">{user.name}</span>
-                  <button onClick={logout} className="login-button">로그아웃</button>
+                  <button onClick={() => logout()} className="login-button">로그아웃</button>
                 </>
               ) : (
                 <>
