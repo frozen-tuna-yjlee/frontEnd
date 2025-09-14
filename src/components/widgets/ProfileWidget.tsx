@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import KakaoLogin from '../auth/KakaoLogin';
 
 const ProfileWidget: React.FC = () => {
   const { user, logout, login } = useAuth();
@@ -67,6 +68,27 @@ const ProfileWidget: React.FC = () => {
               {isLoading ? '로그인 중...' : '로그인'}
             </button>
           </form>
+          <div className="mt-4">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-neutral-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-neutral-500">또는</span>
+              </div>
+            </div>
+            <div className="mt-3">
+              <KakaoLogin 
+                onSuccess={() => {
+                  console.log('카카오 로그인 성공');
+                }}
+                onError={(error) => {
+                  console.error('카카오 로그인 실패:', error);
+                }}
+                className="text-sm"
+              />
+            </div>
+          </div>
         </div>
       </section>
     );

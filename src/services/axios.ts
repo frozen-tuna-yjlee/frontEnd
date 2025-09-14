@@ -34,7 +34,19 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     if (error.response?.status === 401) {
-      // 토큰 만료 시 로그아웃 처리
+      // 카카오 로그인 API는 401 에러를 무시 (토큰이 없어도 정상)
+      if (error.config?.url?.includes('/api/auth/kakao/callback')) {
+        console.warn('카카오 로그인 API에서 401 에러 발생, 무시합니다.');
+        return Promise.reject(error);
+      }
+      
+      // refreshToken API는 401 에러를 무시 (refresh 토큰이 없어도 정상)
+      if (error.config?.url?.includes('/api/auth/refresh')) {
+        console.warn('refreshToken API에서 401 에러 발생, 무시합니다.');
+        return Promise.reject(error);
+      }
+      
+      // 다른 API에서 401 에러 시에만 로그아웃 처리
       localStorage.removeItem('accessToken');
       window.location.href = '/login';
     }

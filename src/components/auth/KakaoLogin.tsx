@@ -7,6 +7,14 @@ interface KakaoLoginProps {
   className?: string;
 }
 
+interface KakaoUserInfo {
+  properties: {
+    nickname: string;
+    profile_image_url: string;
+  };
+  id: string;
+}
+
 declare global {
   interface Window {
     Kakao: any;
@@ -14,35 +22,42 @@ declare global {
 }
 
 const KakaoLogin: React.FC<KakaoLoginProps> = ({ 
-  onSuccess, 
-  onError, 
+  onSuccess = () => {
+    debugger;
+  }, 
+  onError = () => {
+    debugger;
+  }, 
   className = '' 
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isKakaoInitialized, setIsKakaoInitialized] = useState(false);
   const [isKakaoKeySet, setIsKakaoKeySet] = useState(false);
-  const { login } = useAuth();
+  const { kakaoLogin } = useAuth();
+
+  const initializeKakao = () => {
+    if (window.Kakao) {
+      if (!window.Kakao.isInitialized()) {
+        // 카카오 JavaScript 키를 여기에 입력하세요
+        const kakaoKey = '94f7795b9f24715dc2dc8f78420dda8d';
+        // 키가 설정되어 있고 유효한지 확인
+        if (kakaoKey && kakaoKey.length > 10) {
+          window.Kakao.init(kakaoKey);
+          setIsKakaoKeySet(true);
+        } else {
+          console.warn('카카오 JavaScript 키가 설정되지 않았습니다. KakaoLogin.tsx 파일에서 키를 설정해주세요.');
+          setIsKakaoKeySet(false);
+          return;
+        }
+      }
+      
+      setIsKakaoInitialized(true);
+    }
+  };
 
   // 카카오 SDK 초기화
   useEffect(() => {
-    const initializeKakao = () => {
-      if (window.Kakao) {
-        if (!window.Kakao.isInitialized()) {
-          // 카카오 JavaScript 키를 여기에 입력하세요
-          const kakaoKey = '94f7795b9f24715dc2dc8f78420dda8d';
-          // 키가 설정되어 있고 유효한지 확인
-          if (kakaoKey && kakaoKey.length > 10) {
-            window.Kakao.init(kakaoKey);
-            setIsKakaoKeySet(true);
-          } else {
-            console.warn('카카오 JavaScript 키가 설정되지 않았습니다. KakaoLogin.tsx 파일에서 키를 설정해주세요.');
-            setIsKakaoKeySet(false);
-            return;
-          }
-        }
-        setIsKakaoInitialized(true);
-      }
-    };
+    initializeKakao();
 
     // 카카오 SDK 스크립트 로드
     const script = document.createElement('script');
@@ -57,7 +72,9 @@ const KakaoLogin: React.FC<KakaoLoginProps> = ({
   }, []);
 
   // 카카오 로그인 처리
-  const handleKakaoLogin = async () => {
+  const handleKakaoLogin = async (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    window.Kakao.Auth.logout();
     if (!isKakaoInitialized) {
       console.error('카카오 SDK가 초기화되지 않았습니다.');
       if (onError) {
@@ -70,7 +87,7 @@ const KakaoLogin: React.FC<KakaoLoginProps> = ({
 
     try {
       // 카카오 로그인 실행
-      const response = await new Promise((resolve, reject) => {
+      await new Promise((resolve, reject) => {
         window.Kakao.Auth.login({
           success: resolve,
           fail: reject,
@@ -78,41 +95,28 @@ const KakaoLogin: React.FC<KakaoLoginProps> = ({
       });
 
       // 사용자 정보 가져오기
-      const userInfo = await new Promise((resolve, reject) => {
+      const userInfo = await new Promise<KakaoUserInfo | void>((resolve, reject) => {
         window.Kakao.API.request({
           url: '/v2/user/me',
-          success: resolve,
+          success: async (userInfo: KakaoUserInfo) => {
+            await kakaoLogin(userInfo, 'kakao');
+            resolve();
+          },
           fail: reject,
         });
       });
 
-      // 카카오 액세스 토큰 가져오기
-      const accessToken = window.Kakao.Auth.getAccessToken();
+      // AuthContext의 kakaoLogin 메서드 사용
+      console.log('카카오 로그인 성공:', {
+        userInfo,
+      });
 
-      // 백엔드로 카카오 로그인 정보 전송
-      try {
-        // 여기서 백엔드 API 호출
-        // const loginResponse = await login('kakao', accessToken);
-        
-        // 임시로 콘솔에 출력
-        console.log('카카오 로그인 성공:', {
+      // 성공 콜백 호출
+      if (onSuccess) {
+        onSuccess({
           userInfo,
-          accessToken,
+          provider: 'kakao',
         });
-
-        // 성공 콜백 호출
-        if (onSuccess) {
-          onSuccess({
-            userInfo,
-            accessToken,
-            provider: 'kakao',
-          });
-        }
-      } catch (error) {
-        console.error('백엔드 로그인 실패:', error);
-        if (onError) {
-          onError(error);
-        }
       }
     } catch (error) {
       console.error('카카오 로그인 실패:', error);
@@ -124,16 +128,9 @@ const KakaoLogin: React.FC<KakaoLoginProps> = ({
     }
   };
 
-  // 카카오 로그아웃
-  const handleKakaoLogout = () => {
-    if (window.Kakao && window.Kakao.Auth.getAccessToken()) {
-      window.Kakao.Auth.logout();
-      console.log('카카오 로그아웃 완료');
-    }
-  };
-
   return (
     <button
+      type="button"
       onClick={handleKakaoLogin}
       disabled={isLoading || !isKakaoInitialized || !isKakaoKeySet}
       className={`
