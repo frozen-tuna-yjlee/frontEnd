@@ -23,9 +23,11 @@ declare global {
 
 const KakaoLogin: React.FC<KakaoLoginProps> = ({ 
   onSuccess = () => {
+    // eslint-disable-next-line no-debugger
     debugger;
   }, 
   onError = () => {
+    // eslint-disable-next-line no-debugger
     debugger;
   }, 
   className = '' 
