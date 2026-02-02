@@ -1,0 +1,286 @@
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 16px;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.login-form {
+  padding: 20px 24px;
+}
+
+.error-message {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-input:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-label:has(.checkbox-input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkbox-input {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  accent-color: #000;
+}
+
+.checkbox-input:disabled {
+  cursor: not-allowed;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: #374151;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot-password:hover:not(:disabled) {
+  color: #000;
+}
+
+.forgot-password:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  /* margin-bottom: 20px; */
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #374151;
+}
+
+.login-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.social-login {
+  margin-bottom: 20px;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #d1d5db;
+}
+
+.divider-text {
+  background: white;
+  padding: 0 12px;
+  color: #6b7280;
+  font-size: 14px;
+  position: relative;
+}
+
+.google-login {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.google-login:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+
+.google-login:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.google-login i {
+  color: #dc2626;
+}
+
+/* 카카오 로그인 스타일 */
+.kakao-login-container {
+  margin-top: 12px;
+}
+
+.kakao-login-button {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  background-color: #FEE500 !important;
+  color: #000000 !important;
+  border: none !important;
+  transition: background-color 0.2s !important;
+}
+
+.kakao-login-button:hover:not(:disabled) {
+  background-color: #FDD835 !important;
+}
+
+.kakao-login-button:disabled {
+  background-color: #F5F5F5 !important;
+  color: #999999 !important;
+  cursor: not-allowed !important;
+}
+
+.signup-link {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.signup-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  transition: text-decoration 0.2s;
+}
+
+.signup-button:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.signup-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+} 

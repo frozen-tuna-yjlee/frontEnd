@@ -6,23 +6,33 @@
   "scripts": {
     "dev": "vite",
     "start": "vite --host 0.0.0.0 --port 5173",
+    "debug": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug",
+    "debug:verbose": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug --force",
+    "debug:inspect": "vite --debug --host 0.0.0.0 --port 5173 --logLevel debug --inspect",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "axios": "^1.12.2",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.6.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "globals": "^15.12.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
     "typescript": "~5.4.0",
     "typescript-eslint": "^8.2.0",
     "vite": "^5.2.0"

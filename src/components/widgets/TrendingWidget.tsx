@@ -15,7 +15,7 @@ const TrendingWidget: React.FC = () => {
       <ol className="space-y-3">
         {trendingData.map((item, index) => (
           <li key={index} className="flex items-center space-x-3">
-            <span className={`text-white text-sm px-3 py-2 rounded-lg font-bold ${index === 0 ? 'bg-black' : 'bg-neutral-600'}`}>
+            <span className={`text-white text-sm w-9 py-2 rounded-lg font-bold ${index === 0 ? 'bg-black' : 'bg-neutral-600'}`}>
               {index + 1}
             </span>
             <span className="text-base font-semibold">{item}</span>
